@@ -99,7 +99,7 @@ ${(content.education || []).map((edu: any) => `\\cventry{${edu.dates}}{${edu.deg
 
       fs.writeFileSync(texFile, latexString);
 
-      return new Promise((resolve) => {
+      return new Promise<NextResponse>((resolve) => {
         exec(`pdflatex -interaction=nonstopmode -output-directory=${tmpDir} ${texFile}`, (error, stdout, stderr) => {
           if (error) {
             console.error("pdflatex error:", error);
